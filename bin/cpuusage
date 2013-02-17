@@ -1,0 +1,4 @@
+#!/usr/bin/python2.7
+
+from psutil import *
+print("cpu: %3.0d%%" % (cpu_percent(interval=2),))

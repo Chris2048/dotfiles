@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+system("clear");
+
+use Term::ANSIColor qw(:constants);
+$Term::ANSIColor::AUTORESET = 1;
+
+$pt = `ps -Ao cmd=|grep -E '^ssh'`;
+@pt = split(/\n/, $pt);
+foreach $i (@pt) {
+@i = split(/\s/, $i);
+push(@connected, $i[1]) if $#i == 1;
+}
+
+@servs = ();
+
+foreach $i (@servs) {
+  if (grep {$_ eq $i} @connected) {
+    print BOLD BLUE ++$n, " $i \n";
+  } else { print ++$n, " $i \n"; }
+}
+
+print "\nmake choice: ";
+$c = <>;
+system("clear");
+exec "TERM='screen-256color' ssh $servs[$c-1]";
+
+#var=host ;while ! nc -zw 1 $var 22;do sleep 1; done ; ssh user@$var

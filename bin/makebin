@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo chown -R chris.users ~chris/bin
+sudo chmod u+x ~chris/bin/*

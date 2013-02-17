@@ -1,0 +1,4 @@
+#!/bin/bash
+
+DESC="${@:2}"
+exec google calendar add --cal thetvdb --date "$1" "$DESC" >/dev/null 2>&1

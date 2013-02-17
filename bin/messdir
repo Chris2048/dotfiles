@@ -1,0 +1,13 @@
+#!/bin/sh
+
+MESSDIR="$HOME/.mess"
+DATENUM=`date +"%V"`
+
+if [ ! -e $MESSDIR/$DATENUM ]; then
+	find $MESSDIR -maxdepth 1 -type d -empty -exec rmdir {} \;
+	mkdir $MESSDIR/$DATENUM
+	cp -P "$HOME/mess" $MESSDIR/$DATENUM/PREV
+	ln -fns $MESSDIR/$DATENUM "$HOME/mess"
+fi && cd "$HOME/mess"
+
+echo $PWD

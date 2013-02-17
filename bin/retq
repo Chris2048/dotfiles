@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "Press any key to run $1..."
+
+while true; do
+ read -sn 1 reply
+ case $reply in
+  'q' )
+   break ;;
+  * )
+   $@ ;;
+ esac
+ sleep 1s; echo "Press any key to rerun $1..."
+done
+
+exec bash
+exit 1

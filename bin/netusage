@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true
+do
+vnstat -tr 2 \
+| tr -d '\n' \
+| sed -e 's/^.*rx\ *\([\.0-9]*\)\ .*tx\ *\([\.0-9]*\)\ .*$/\1 dn \2 up\n/'
+done

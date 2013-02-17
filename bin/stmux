@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if ! tmux has -t default; then
+    tmux new -d -s default
+    exec tmux attach -t default
+else
+    exec tmux attach -t default
+fi
+
+exit 1
